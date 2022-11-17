@@ -1,13 +1,15 @@
 import { Link } from "react-router-dom"
+import DigimonList from "./DigimonList"
 
 
 interface IDigimon {
   commonName: string,
   commonImg: string,
-  commonLevel: string
+  commonLevel: string,
+  keepDigimon: Function
 }
 
-function Digicard({ commonName, commonImg, commonLevel }: IDigimon) {
+function Digicard({ commonName, commonImg, commonLevel, keepDigimon }: IDigimon) {
   return <div>
     <Link to={`/digimon/${commonName}`}>
       <div className="card">
@@ -25,7 +27,7 @@ function Digicard({ commonName, commonImg, commonLevel }: IDigimon) {
       </div>
     </Link>
     <div>
-      <button>Add to list</button>
+      <button onClick={() => {keepDigimon(commonName, commonImg, commonLevel)}}>Add to list</button>
     </div>
   </div>
 }

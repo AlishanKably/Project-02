@@ -13,7 +13,8 @@ function DigimonList() {
   const [digimons, setDigimons] = React.useState<DigimonList>(null)
   const [selectedLevel, setSelectedLevel] = React.useState("Choose level")
   const [search, setSearch] = React.useState("")
-
+  const [myList, setMyList] = React.useState<Array<Digicard>>([])
+console.log(myList)
   React.useEffect(() => {
     async function fetchDigimon() {
       const resp = await fetch("https://digimon-api.vercel.app/api/digimon")
@@ -22,6 +23,18 @@ function DigimonList() {
     }
     fetchDigimon()
   }, [])
+
+  function keepDigimon(commonName, commonImg, commonLevel) {
+    const newDigimon = {
+      name: commonName,
+      img: commonImg,
+      level: commonLevel
+    }
+    const digimonListCopy = structuredClone(myList)
+    digimonListCopy.push(newDigimon)
+    setMyList(digimonListCopy)
+  
+  }
 
   function filterDigimon() {
     return digimons?.filter((digimon) => {
@@ -61,19 +74,10 @@ function DigimonList() {
           commonName={digimon.name}
           commonImg={digimon.img}
           commonLevel={digimon.level}
+          keepDigimon={keepDigimon}
         />
       })}
     </div>
-    {/* <div className="columns is-multiline">
-      {filterDigimon()?.map((digimon) => {
-        return <Digicard
-          key={digimon.name}
-          commonName={digimon.name}
-          commonImg={digimon.img}
-          commonLevel={digimon.level}
-        />
-      })}
-    </div> */}
   </div>
 </section>
 }
