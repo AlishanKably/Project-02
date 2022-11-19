@@ -9,12 +9,12 @@ interface Digicard {
 
 type DigimonList = null | Array<Digicard>
 
-function DigimonList() {
+function DigimonList({keepDigimon}) {
+
   const [digimons, setDigimons] = React.useState<DigimonList>(null)
   const [selectedLevel, setSelectedLevel] = React.useState("Choose level")
   const [search, setSearch] = React.useState("")
-  const [myList, setMyList] = React.useState<Array<Digicard>>([])
-console.log(myList)
+
   React.useEffect(() => {
     async function fetchDigimon() {
       const resp = await fetch("https://digimon-api.vercel.app/api/digimon")
@@ -24,16 +24,8 @@ console.log(myList)
     fetchDigimon()
   }, [])
 
-  function keepDigimon(commonName, commonImg, commonLevel) {
-    const newDigimon = {
-      name: commonName,
-      img: commonImg,
-      level: commonLevel
-    }
-    const digimonListCopy = structuredClone(myList)
-    digimonListCopy.push(newDigimon)
-    setMyList(digimonListCopy)
-  
+  if (!digimons) {
+    return <p>Loading Monsters...</p>
   }
 
   function filterDigimon() {

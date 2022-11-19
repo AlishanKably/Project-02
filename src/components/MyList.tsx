@@ -1,29 +1,22 @@
 import React from "react"
+import { useParams } from "react-router-dom"
 import Digicard from "./DigiCard"
-import DigimonList from "./DigimonList"
 import ShowCard from "./ShowCard"
+import DigimonList from "./DigimonList"
 
-interface Digicard {
-  name: string,
-  img: string,
-  level: string
+
+function MyList({myList}) {
+  console.log(myList)
+  return <div className="columns is-multiline">
+  {myList?.map((digimon) => {
+    return <Digicard 
+    key={digimon.name}
+    commonName={digimon.name}
+    commonImg={digimon.img}
+    commonLevel={digimon.level}
+    />
+  })}
+</div>
 }
 
-
-function AddToList() {
-  const [myList, setMyList] = React.useState<Array<Digicard>>([])
-}
-
-function keepDigimon() {
-  const newDigimon = {
-    name: digimon.name,
-    img: digimon.img,
-    level: digimon.level
-  }
-  const digimonListCopy = structuredClone(myList)
-  digimonListCopy.push(newDigimon)
-  setMyList(digimonListCopy)
-  fetchDigimon()
-}
-
-<button onClick={keepDigimon}>Keep</button>
+export default MyList

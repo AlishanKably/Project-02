@@ -6,7 +6,7 @@ function Home() {
     <section className="hero is-link is-fullheight-with-navbar is-link">
       <div className="hero-body has-text-centered">
         <div className="container">
-          <p>Homepage</p>
+          <p>Explore the world of Digimon</p>
         </div>
       </div>
     </section>
