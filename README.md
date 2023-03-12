@@ -3,7 +3,7 @@
 
 ### Description
 
-For my second project, I created a frontend, single page app over the course of 1 week using React where users can browse through Digimon cards and add their favourite cards to their personalised deck.
+For my second solo project, I created a frontend, single page app over the course of 1 week using React where users can browse through Digimon cards and add their favourite cards to their personalised deck.
 
 ### Deployment link
 
@@ -34,11 +34,11 @@ The main methods used to form this single page app included the following:
 * Promises
 * Git and GitHub
 
-## Build
+## Build Process
 
-The initial stage of the project was to plan the content for each of the pages and decide on what functions would be used to allow the pages to interact with each other.  This was done by creating a number of different 'components' folders which contained the JSX code for each element of the app. 
+The initial stage of the project was to plan the content for each of the pages and decide on what functions would be used to allow the pages to interact with each other.  I did this by creating a number of different 'components' folders which contained the JSX code for each element of the app. 
 
-Within the 'App' file, each of the components were then linked to a different 'Route' which consists of a path and an element, each element being imported from the components. This tells React Router what to show on a particular URL. The purpose of using Routes is to ensure the page does not need to to reload each time a tab is clicked.  A navbar is also used to navigate between these pages.
+Within the 'App' file, I linked each of the components to a different 'Route' which consists of a path and an element, each element being imported from the components. This tells React Router what to show on a particular URL. The purpose of using Routes is to ensure the page does not need to to reload each time a tab is clicked.  A navbar is also used to navigate between these pages.
 
 ```
 <Router>
@@ -110,7 +110,7 @@ React.useEffect(() => {
 
 * ShowCard
 
-This component is used in a separate route and allows the user to view the card individually, showing a more detailed description of the card. The individual card is fetched by suffixing ```/${cardName}``` at the end of the API URL. The addition of Hooks allowed me to use state without the use of writing classes. This allowed changes to render on the page as pass props through the ```return``` section. ```useParams``` was used to retrieve route parameters from the component rendered by the matching route as shown below. An example of this is when filtering the Digimon list through the search bar or drop menu filter which re-renders without re-loading the page.
+This component is used in a separate route and allows the user to view the card individually, showing a more detailed description of the card. The individual card is fetched by suffixing ```/${cardName}``` at the end of the API URL. The addition of Hooks allowed me to use state without the use of writing classes. This allowed changes to render on the page as pass props through the ```return``` section. ```useParams``` was used to retrieve route parameters from the component rendered by the matching route as shown below. An example of this is when filtering the Digimon list through the search bar or drop menu filter which re-renders without reloading the page.
 
 ```
 const { cardName } = useParams()
@@ -156,7 +156,7 @@ This function was then used within the ```DigimonList``` route to allow the func
 
 ### Wins
 
-I was able to overcome the challenges faced in creating a functional single page app.
+I was able to overcome the challenges faced in creating a functional single page app and produce an interactive app with multiple tabs which render new pages without reloading the page. I was able to create and implement a function that allowed individual cards to be stored and saved to a separate page. This has made me realise the potential to use this method in saving items to a basket for future projects. I was able to show me ability to filter through items on a page through multiple e=means such as drop down and search filters.
 
 ### Lessons learnt
 
